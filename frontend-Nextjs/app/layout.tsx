@@ -1,21 +1,19 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
-import { Navbar } from "@/components/navbar";
-import { Footer } from "@/components/footer";
-import { CallButton } from "@/components/call-button";
-import { WhatsAppButton } from "@/components/whatsapp-button";
 import "./globals.css";
 import ClientLayout from "./client-layout";
 
-const geistSans = Geist({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-geist-sans",
+  variable: "--font-inter",
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
+const playfair = Playfair_Display({
   subsets: ["latin"],
-  variable: "--font-geist-mono",
+  variable: "--font-playfair",
+  display: "swap",
 });
 
 export const viewport: Viewport = {
@@ -65,7 +63,7 @@ children,
   return (
     <html lang="en" className="bg-background">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
+        className={`${inter.variable} ${playfair.variable} font-sans antialiased`}
         suppressHydrationWarning
       >
         <ClientLayout>{children}</ClientLayout>
@@ -75,4 +73,3 @@ children,
     </html>
   );
 }
-

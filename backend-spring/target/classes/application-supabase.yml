@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://aws-1-ap-northeast-1.pooler.supabase.com:5432/postgres?sslmode=require&prepareThreshold=0
+    username: postgres.yjgsxbhxmmjbayrgmdzb
+    password: postgresadmin
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      # Supabase pooler drops idle connections after ~5 min, so keep maxLifetime shorter
+      max-lifetime: 240000          # 4 minutes (< Supabase's 5 min timeout)
+      keepalive-time: 120000        # Send keepalive ping every 2 minutes
+      connection-timeout: 30000     # 30 seconds to get a connection from pool
+      idle-timeout: 120000          # Remove idle connections after 2 minutes
+      minimum-idle: 2               # Keep at least 2 connections warm
+      maximum-pool-size: 10
+      connection-test-query: SELECT 1  # Validate connections before use
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+app:
+  cors:
+    allowed-origins: http://localhost:3000,http://127.0.0.1:3000,http://130.210.11.179

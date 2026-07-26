@@ -2,18 +2,17 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Menu, X, Phone } from "lucide-react";
 import Image from "next/image";
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/services", label: "Services" },
-  { href: "/diseases", label: "Diseases" },
-  { href: "/gallery", label: "Gallery" },
+  { href: "/about", label: "About Us" },
+  { href: "/programs", label: "Our Programs" },
+  { href: "/services", label: "Wellness Assessment" },
+  { href: "/admin/login", label: "Patient Portal" },
   { href: "/blog", label: "Blog" },
-  { href: "/testimonials", label: "Testimonials" },
-  { href: "/about", label: "About" },
+  { href: "/appointment", label: "Contact Us" },
 ];
 
 export function MobileNavbar() {
@@ -21,14 +20,12 @@ export function MobileNavbar() {
 
   return (
     <>
-      {/* Single header — always renders, CSS handles mobile/desktop visibility */}
-      <header className="sticky top-0 z-[9999] w-full bg-background border-b border-border shadow-sm md:hidden">
+      <header className="sticky top-0 z-[9999] w-full bg-white border-b border-border shadow-sm md:hidden">
         <div className="flex items-center justify-between px-4 py-3">
-          {/* Logo */}
           <Link href="/" onClick={() => setIsOpen(false)}>
             <Image
               src="/logo.png"
-              alt="Pathak Homoeopathic"
+              alt="Pathak Homoeopathic Clinic"
               width={400}
               height={130}
               className="w-[180px] h-auto object-contain"
@@ -36,64 +33,71 @@ export function MobileNavbar() {
             />
           </Link>
 
-          {/* Hamburger — use <a> to avoid mobile double-fire bug */}
-          <a
-            href="javascript:void(0)"
-            role="button"
-            aria-label="Toggle navigation menu"
-            onClick={(e) => {
-              e.preventDefault();
-              // Log to server terminal for debugging
-              fetch("/api/debug?event=hamburger-click").catch(() => {});
-              console.log("[MobileNavbar] hamburger clicked, isOpen:", !isOpen);
-              setIsOpen((prev) => !prev);
-            }}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              width: 48,
-              height: 48,
-              borderRadius: 8,
-              border: "1px solid var(--border)",
-              background: "var(--card)",
-              cursor: "pointer",
-              WebkitTapHighlightColor: "transparent",
-              touchAction: "manipulation",
-              textDecoration: "none",
-            }}
-          >
-            {isOpen ? (
-              <X style={{ width: 28, height: 28, color: "var(--foreground)", pointerEvents: "none" }} />
-            ) : (
-              <Menu style={{ width: 28, height: 28, color: "var(--foreground)", pointerEvents: "none" }} />
-            )}
-          </a>
+          <div className="flex items-center gap-2">
+            <a
+              href="tel:+916394951471"
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--color-green)]/10 text-[var(--color-green)]"
+              aria-label="Call us"
+            >
+              <Phone className="h-5 w-5" />
+            </a>
+
+            <a
+              href="javascript:void(0)"
+              role="button"
+              aria-label="Toggle navigation menu"
+              onClick={(e) => {
+                e.preventDefault();
+                setIsOpen((prev) => !prev);
+              }}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: 44,
+                height: 44,
+                borderRadius: 8,
+                border: "1px solid var(--border)",
+                background: "var(--card)",
+                cursor: "pointer",
+                WebkitTapHighlightColor: "transparent",
+                touchAction: "manipulation",
+                textDecoration: "none",
+              }}
+            >
+              {isOpen ? (
+                <X style={{ width: 24, height: 24, color: "var(--foreground)", pointerEvents: "none" }} />
+              ) : (
+                <Menu style={{ width: 24, height: 24, color: "var(--foreground)", pointerEvents: "none" }} />
+              )}
+            </a>
+          </div>
         </div>
       </header>
 
-      {/* Dropdown menu */}
       {isOpen && (
         <div
-          className="fixed inset-0 z-[9998] bg-background flex flex-col pt-20 px-6 pb-6 overflow-y-auto"
+          className="fixed inset-0 z-[9998] bg-white flex flex-col pt-20 px-6 pb-6 overflow-y-auto"
           style={{ top: 0 }}
         >
-          <nav className="flex flex-col gap-2">
+          <nav className="flex flex-col gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="text-xl font-medium text-foreground py-4 border-b border-border/50 hover:text-primary transition-colors"
+                className="text-lg font-medium text-foreground py-3.5 border-b border-border/30 hover:text-[var(--color-navy)] transition-colors"
               >
                 {link.label}
               </Link>
             ))}
-            <Button asChild className="w-full mt-6 py-6 text-lg">
-              <Link href="/appointment" onClick={() => setIsOpen(false)}>
-                Book Appointment
-              </Link>
-            </Button>
+            <Link
+              href="/appointment"
+              onClick={() => setIsOpen(false)}
+              className="mt-6 w-full rounded-md bg-[var(--color-navy)] py-4 text-center text-lg font-semibold text-white hover:bg-[var(--color-navy-light)] transition-colors"
+            >
+              Book Appointment
+            </Link>
           </nav>
         </div>
       )}

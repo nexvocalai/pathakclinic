@@ -1,78 +1,88 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowRight, MessageCircle } from "lucide-react";
+
+const programTags = [
+  "Healthy Child",
+  "Confident Woman",
+  "Peaceful Mind",
+  "Active Life",
+  "Healthy Ageing",
+];
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden py-16 sm:py-20 md:py-32">
+    <section className="relative overflow-hidden bg-[var(--color-cream)]">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="grid items-center gap-8 py-12 md:grid-cols-2 md:py-20 lg:py-24">
+          {/* Left Content */}
+          <div className="order-2 md:order-1">
+            <h1 className="font-heading text-3xl font-bold leading-tight tracking-tight text-[var(--color-navy)] sm:text-4xl md:text-5xl lg:text-[3.5rem]">
+              Helping Every
+              <br />
+              Family Live Healthier
+            </h1>
 
-      {/* ✅ BACKGROUND */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/hero-homeopathy.jpg"
-          alt="Homoeopathic healing background"
-          fill
-          priority
-          className="object-cover blur-[1px] scale-105"
-        />
+            {/* Program Tags */}
+            <div className="mt-5 flex flex-wrap items-center gap-x-2 gap-y-1.5">
+              {programTags.map((tag, i) => (
+                <span key={tag} className="flex items-center gap-2">
+                  <span className="text-sm font-medium text-[var(--color-green)] md:text-base">
+                    {tag}
+                  </span>
+                  {i < programTags.length - 1 && (
+                    <span className="text-muted-foreground/40">•</span>
+                  )}
+                </span>
+              ))}
+            </div>
 
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black/40" />
+            <p className="mt-5 max-w-lg text-base leading-relaxed text-muted-foreground md:text-lg">
+              Personalized homoeopathic care, lifestyle guidance
+              and ongoing support for lifelong wellness.
+            </p>
 
-        {/* Soft gradient for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
-      </div>
-
-      {/* ✅ CONTENT */}
-      <div className="relative z-10 container mx-auto px-4 md:px-6">
-        <div className="mx-auto max-w-3xl text-center">
-
-          {/* Badge */}
-          <div className="mb-5 inline-flex items-center rounded-full border border-white/30 bg-white/10 backdrop-blur px-4 py-1.5">
-            <span className="text-sm font-medium text-white">
-              Natural Healing | Personalized Homoeopathic Care
-            </span>
-          </div>
-
-          {/* Heading */}
-          <h1 className="mb-5 text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-6xl">
-            Pathak Homoeopathic
-          </h1>
-
-          {/* Description */}
-          <p className="mb-8 text-base leading-relaxed text-white/85 sm:text-lg md:text-xl">
-            Experience the gentle power of homoeopathy. We provide safe,
-            natural, and personalized treatment that addresses the root cause
-            of your health concerns.
-          </p>
-
-          {/* CTA */}
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-
-            <Button asChild size="lg" className="w-full sm:w-auto gap-2 shadow-lg">
-              <Link href="/appointment">
-                Book Appointment <ArrowRight className="h-4 w-4" />
+            {/* CTA Buttons */}
+            <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
+              <Link
+                href="/appointment"
+                className="inline-flex items-center gap-2 rounded-md bg-[var(--color-navy)] px-6 py-3 text-sm font-semibold text-white shadow-md transition-all hover:bg-[var(--color-navy-light)] hover:shadow-lg"
+              >
+                Book Appointment
               </Link>
-            </Button>
-
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="w-full sm:w-auto border-white/40 text-black hover:bg-white/10"
-            >
               <a
-                href="https://wa.me/916394951471"
+                href="https://wa.me/916394951471?text=Hello%2C%20I%20would%20like%20to%20book%20an%20appointment%20at%20Pathak%20Homoeopathic."
                 target="_blank"
                 rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-md bg-[#25D366] px-6 py-3 text-sm font-semibold text-white shadow-md transition-all hover:bg-[#20bd5a] hover:shadow-lg"
               >
-                Chat on WhatsApp
+                <MessageCircle className="h-4 w-4" />
+                WhatsApp Now
               </a>
-            </Button>
-
+              <Link
+                href="/programs"
+                className="inline-flex items-center gap-2 rounded-md border border-[var(--color-navy)]/30 px-6 py-3 text-sm font-semibold text-[var(--color-navy)] transition-all hover:bg-[var(--color-navy)]/5"
+              >
+                Explore Programs
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
           </div>
 
+          {/* Right Image */}
+          <div className="order-1 md:order-2 flex justify-center md:justify-end">
+            <div className="relative w-full max-w-[480px] aspect-[4/3] overflow-hidden rounded-2xl shadow-2xl">
+              <Image
+                src="/images/hero-homeopathy.jpg"
+                alt="Happy healthy family"
+                fill
+                priority
+                className="object-cover"
+              />
+              {/* Subtle overlay for premium feel */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-navy)]/10 to-transparent" />
+            </div>
+          </div>
         </div>
       </div>
     </section>
