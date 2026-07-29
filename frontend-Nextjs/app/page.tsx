@@ -1,21 +1,21 @@
 import { HeroSection } from "@/components/home/hero-section";
-import { AboutDoctor } from "@/components/home/about-doctor";
-import { WhyHomoeopathy } from "@/components/home/why-homoeopathy";
-import { DoctorEventsSlider } from "@/components/home/doctor-events-slider";
-import { AreasSpecialization } from "@/components/home/areas-specialization";
-import { FeaturedBlog } from "@/components/home/featured-blog";
-import { CTASection } from "@/components/home/cta-section";
+import { ProgramsSection } from "@/components/home/programs-section";
+import { StatsBar } from "@/components/home/stats-bar";
+import { WhyChooseUs } from "@/components/home/why-choose-us";
+import { BookAppointmentCTA } from "@/components/home/book-appointment-cta";
+import { TrustedBy } from "@/components/home/trusted-by";
+import { UniqueFeatures } from "@/components/home/unique-features";
 
 export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <AboutDoctor />
-      <WhyHomoeopathy />
-      <DoctorEventsSlider />
-      <AreasSpecialization />
-      <FeaturedBlog />
-      <CTASection />
+      <ProgramsSection />
+      <StatsBar />
+      <WhyChooseUs />
+      <BookAppointmentCTA />
+      <TrustedBy />
+      <UniqueFeatures />
     </>
   );
 }
