@@ -131,9 +131,9 @@ export default function AdminLoginPage() {
           </form>
 
           {/* Footer */}
-          <p className="mt-6 text-center text-sm text-muted-foreground">
+          {/* <p className="mt-6 text-center text-sm text-muted-foreground">
             Demo credentials: doctor@pathak.com / password123
-          </p>
+          </p> */}
         </div>
       </div>
     </div>

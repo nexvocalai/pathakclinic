@@ -7,7 +7,7 @@ import Image from "next/image";
 export function TestimonialsGrid() {
   return (
     <div className="space-y-10">
-      
+
       {/* ✅ Summary Stats */}
       <div className="grid gap-4 md:grid-cols-3">
         <div className="rounded-xl border border-border bg-card p-6 text-center shadow-sm">
@@ -23,7 +23,7 @@ export function TestimonialsGrid() {
         </div>
 
         <div className="rounded-xl border border-border bg-card p-6 text-center shadow-sm">
-          <p className="text-3xl font-bold text-foreground">14+</p>
+          <p className="text-3xl font-bold text-foreground">30+</p>
           <p className="text-sm text-muted-foreground">Google Reviews</p>
         </div>
 
@@ -66,7 +66,7 @@ export function TestimonialsGrid() {
                 </p>
               </div>
               <div className="ml-auto">
-                 <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" className="w-5 h-5 opacity-70" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" className="w-5 h-5 opacity-70" />
               </div>
             </div>
 
@@ -76,11 +76,10 @@ export function TestimonialsGrid() {
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star
                     key={i}
-                    className={`h-4 w-4 ${
-                      i < testimonial.rating
+                    className={`h-4 w-4 ${i < testimonial.rating
                         ? "fill-[#fbbc04] text-[#fbbc04]"
                         : "fill-muted text-muted"
-                    }`}
+                      }`}
                   />
                 ))}
               </div>

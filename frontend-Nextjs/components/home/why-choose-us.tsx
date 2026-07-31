@@ -40,18 +40,23 @@ export function WhyChooseUs() {
         </div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 items-stretch">
           {features.map((feature) => (
             <div
               key={feature.title}
-              className="group flex flex-col items-center text-center"
+              className="group flex flex-col items-center text-center p-3 rounded-xl transition-all duration-300 hover:bg-slate-50"
             >
-              <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-[var(--color-sage)] transition-all group-hover:bg-[var(--color-green)]/15 group-hover:scale-110">
+              <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-[var(--color-sage)] transition-all duration-300 group-hover:bg-[var(--color-green)]/20 group-hover:scale-110 shrink-0">
                 <feature.icon className="h-6 w-6 text-[var(--color-green)]" />
               </div>
-              <h3 className="mb-2 text-base font-semibold text-[var(--color-navy)]">
-                {feature.title}
-              </h3>
+
+              {/* Fixed title container height ensures aligned descriptions across all cards */}
+              <div className="mb-2 flex min-h-[2.75rem] items-center justify-center">
+                <h3 className="text-base font-semibold text-[var(--color-navy)] leading-snug">
+                  {feature.title}
+                </h3>
+              </div>
+
               <p className="text-sm leading-relaxed text-muted-foreground">
                 {feature.description}
               </p>
