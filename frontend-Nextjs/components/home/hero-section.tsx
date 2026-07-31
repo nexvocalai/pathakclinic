@@ -12,49 +12,54 @@ const programTags = [
 export function HeroSection() {
   return (
     <section className="relative overflow-hidden min-h-[480px] md:min-h-[540px] flex items-center">
-      {/* Full-background video */}
+      {/* Full-background video — no blur */}
       <video
         autoPlay
         loop
         muted
         playsInline
         preload="auto"
-        className="absolute inset-0 w-full h-full object-cover object-center scale-105 blur-sm"
+        className="absolute inset-0 w-full h-full object-cover object-center"
         aria-hidden="true"
       >
         <source src="/background-video.mp4" type="video/mp4" />
       </video>
 
-      {/* Overlay: darker on the left so text stays readable, lighter on the right to show video */}
-      {/* Strong left overlay for text legibility, lighter on right to show video */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-cream)]/[0.92] via-[var(--color-cream)]/75 to-[var(--color-cream)]/40" />
-      {/* Extra top+bottom vignette for depth */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/15" />
+      {/* Left-heavy overlay so text stays sharp, right side shows video clearly */}
+      <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/65 to-white/10" />
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 md:px-6 py-16 md:py-24 lg:py-28">
         <div className="max-w-xl">
-          <h1 className="font-heading text-3xl font-bold leading-tight tracking-tight text-[var(--color-navy)] sm:text-4xl md:text-5xl lg:text-[3.5rem]">
+
+          {/* Heading — heavier weight + text shadow for crisp visibility */}
+          <h1
+            className="font-heading text-3xl font-extrabold leading-tight tracking-tight text-[var(--color-navy)] sm:text-4xl md:text-5xl lg:text-[3.5rem]"
+            style={{ textShadow: "0 1px 3px rgba(255,255,255,0.9), 0 2px 8px rgba(255,255,255,0.6)" }}
+          >
             Helping Every
             <br />
             Family Live Healthier
           </h1>
 
-          {/* Program Tags */}
-          <div className="mt-5 flex flex-wrap items-center gap-x-2 gap-y-1.5">
+          {/* Program Tags — bolder with subtle bg pill for contrast */}
+          <div className="mt-5 flex flex-wrap items-center gap-x-2 gap-y-2">
             {programTags.map((tag, i) => (
               <span key={tag} className="flex items-center gap-2">
-                <span className="text-sm font-medium text-[var(--color-green)] md:text-base">
+                <span className="text-sm font-semibold text-[var(--color-green)] md:text-base drop-shadow-sm">
                   {tag}
                 </span>
                 {i < programTags.length - 1 && (
-                  <span className="text-muted-foreground/40">•</span>
+                  <span className="text-[var(--color-navy)]/30 font-bold">•</span>
                 )}
               </span>
             ))}
           </div>
 
-          <p className="mt-5 max-w-lg text-base leading-relaxed text-muted-foreground md:text-lg">
+          {/* Description — dark navy for strong contrast, slightly bolder */}
+          <p className="mt-5 max-w-lg text-base font-medium leading-relaxed text-[var(--color-navy)]/70 md:text-lg"
+            style={{ textShadow: "0 1px 4px rgba(255,255,255,0.8)" }}
+          >
             Personalized homoeopathic care, lifestyle guidance
             and ongoing support for lifelong wellness.
           </p>
@@ -63,7 +68,7 @@ export function HeroSection() {
           <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
             <Link
               href="/appointment"
-              className="inline-flex items-center gap-2 rounded-md bg-[var(--color-navy)] px-6 py-3 text-sm font-semibold text-white shadow-md transition-all hover:bg-[var(--color-navy-light)] hover:shadow-lg"
+              className="inline-flex items-center gap-2 rounded-md bg-[var(--color-navy)] px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all hover:bg-[var(--color-navy-light)] hover:shadow-xl"
             >
               Book Appointment
             </Link>
@@ -71,14 +76,14 @@ export function HeroSection() {
               href="https://wa.me/916394951471?text=Hello%2C%20I%20would%20like%20to%20book%20an%20appointment%20at%20Pathak%20Homoeopathic."
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-md bg-[#25D366] px-6 py-3 text-sm font-semibold text-white shadow-md transition-all hover:bg-[#20bd5a] hover:shadow-lg"
+              className="inline-flex items-center gap-2 rounded-md bg-[#25D366] px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all hover:bg-[#20bd5a] hover:shadow-xl"
             >
               <MessageCircle className="h-4 w-4" />
               WhatsApp Now
             </a>
             <Link
               href="/programs"
-              className="inline-flex items-center gap-2 rounded-md border border-[var(--color-navy)]/30 px-6 py-3 text-sm font-semibold text-[var(--color-navy)] transition-all hover:bg-[var(--color-navy)]/5"
+              className="inline-flex items-center gap-2 rounded-md border-2 border-[var(--color-navy)]/40 bg-white/60 px-6 py-3 text-sm font-semibold text-[var(--color-navy)] backdrop-blur-sm transition-all hover:bg-white/80"
             >
               Explore Programs
               <ArrowRight className="h-4 w-4" />
