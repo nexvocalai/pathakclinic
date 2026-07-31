@@ -3,19 +3,18 @@ import Image from "next/image";
 import { Phone, MapPin, Mail } from "lucide-react";
 
 const quickLinks1 = [
-  { href: "/", label: "Home" },
   { href: "/about", label: "About Us" },
   { href: "/programs", label: "Our Programs" },
-  { href: "/services", label: "Wellness Assessment" },
-  { href: "/admin/login", label: "Patient Portal" },
+  { href: "/services", label: "Services" },
+  { href: "/diseases", label: "Diseases We Treat" },
+  { href: "/testimonials", label: "Testimonials" },
 ];
 
 const quickLinks2 = [
   { href: "/blog", label: "Blog" },
-  { href: "/testimonials", label: "Testimonials" },
-  { href: "/gallery", label: "Gallery" },
+  { href: "/gallery", label: "Highlights" },
   { href: "/appointment", label: "Contact Us" },
-  { href: "/diseases", label: "Diseases" },
+  { href: "/admin/login", label: "Doctor Login" },
 ];
 
 const socialLinks = [
@@ -56,21 +55,13 @@ export function Footer() {
           {/* Brand */}
           <div className="space-y-5">
             <Link href="/" className="inline-block">
-              <div className="flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10 border border-white/20">
-                  <span className="font-heading text-xl font-bold text-[var(--color-gold)]">
-                    PH
-                  </span>
-                </div>
-                <div>
-                  <p className="text-sm font-bold tracking-wide text-white uppercase">
-                    Pathak
-                  </p>
-                  <p className="text-[11px] font-medium tracking-wider text-white/60 uppercase">
-                    Homoeopathic Clinic
-                  </p>
-                </div>
-              </div>
+              <Image
+                src="/logo.png"
+                alt="Pathak Homoeopathic Clinic"
+                width={400}
+                height={130}
+                className="w-[220px] h-auto object-contain brightness-0 invert opacity-95 transition-opacity hover:opacity-100 drop-shadow-[0_2px_8px_rgba(255,255,255,0.1)]"
+              />
             </Link>
             <p className="text-sm leading-relaxed text-white/60">
               Your Neighbourhood Wellness Clinic
@@ -129,11 +120,18 @@ export function Footer() {
             </h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[var(--color-gold)]" />
-                <span className="text-sm leading-relaxed text-white/60">
-                  G-06, F-7 Tower, Centurian Park Terrace Homes,
-                  Amrapali, Greater Noida West, 201318
-                </span>
+                <a
+                  href="https://www.google.com/maps?cid=17046433687650793941&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAMYASAF&hl=en&gl=IN&source=embed"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-start gap-3 text-sm leading-relaxed text-white/60 transition-colors hover:text-[var(--color-gold)]"
+                >
+                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[var(--color-gold)] transition-transform group-hover:scale-110" />
+                  <span>
+                    G-06, F-7 Tower, Centurian Park Terrace Homes,
+                    Amrapali, Greater Noida West, 201318
+                  </span>
+                </a>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="h-4 w-4 shrink-0 text-[var(--color-gold)]" />

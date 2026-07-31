@@ -3,7 +3,7 @@ const trustedLogos = [
   { name: "Lybrate", text: "lybrate" },
   { name: "HealthSite", text: "HealthSite.com" },
   { name: "JustDial", text: "JustDial" },
-  { name: "Practo", text: "•practo•" },
+  // { name: "Practo", text: "•practo•" },
 ];
 
 export function TrustedBy() {

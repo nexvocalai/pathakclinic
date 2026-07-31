@@ -225,7 +225,7 @@ export const programs: Program[] = [
     subtitle: "More Energy. Better Health. Active Lifestyle.",
     description:
       "Holistic homoeopathic solutions for lifestyle disorders, weight management, diabetes support and overall vitality.",
-    heroImage: "/images/chronic-diseases.jpg",
+    heroImage: "/images/active-life.jpg",
     benefits: [
       { icon: "Activity", label: "Increased Energy" },
       { icon: "TrendingUp", label: "Better Metabolism" },
@@ -261,7 +261,7 @@ export const programs: Program[] = [
       title: "Your Active Life Starts Here",
       description:
         "We help you overcome lifestyle disorders naturally and sustainably, so you can live an active, fulfilling life.",
-      image: "/images/chronic-diseases.jpg",
+      image: "/images/active-life.jpg",
     },
     commonConcerns: [
       { icon: "TrendingUp", label: "Weight Issues" },
@@ -287,7 +287,7 @@ export const programs: Program[] = [
     subtitle: "Age Gracefully. Stay Strong. Live Fully.",
     description:
       "Natural homoeopathic support for age-related health concerns — bone health, memory, joint care and overall well-being.",
-    heroImage: "/images/chronic-diseases.jpg",
+    heroImage: "/images/healthy-ageing.jpg",
     benefits: [
       { icon: "Shield", label: "Joint Health" },
       { icon: "Brain", label: "Memory Support" },
@@ -323,7 +323,7 @@ export const programs: Program[] = [
       title: "Graceful Ageing with Nature",
       description:
         "Ageing doesn't mean slowing down. Our gentle homoeopathic care helps you stay active, sharp and healthy as you age.",
-      image: "/images/chronic-diseases.jpg",
+      image: "/images/healthy-ageing.jpg",
     },
     commonConcerns: [
       { icon: "Shield", label: "Arthritis" },

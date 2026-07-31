@@ -2,9 +2,33 @@
 
 import { useEffect, useState } from 'react';
 import { getGalleryItems } from '@/app/actions/gallery';
-import { ChevronLeft, ChevronRight, ZoomIn, ArrowRight, Sparkles, Image as ImageIcon } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ZoomIn, ArrowRight, Sparkles, X } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+
+const fallbackItems = [
+  {
+    id: 'fb-1',
+    title: 'Dr. Rati Pathak - Clinical Highlights & Achievements',
+    category: 'DOCTOR',
+    description: 'Recognized for excellence in natural & holistic homoeopathic healthcare.',
+    image: '/images/dr_rati_pathak.png',
+  },
+  {
+    id: 'fb-2',
+    title: 'Medical Milestones & Community Events',
+    category: 'EVENT',
+    description: 'Specialized health awareness programs and patient care events.',
+    image: '/images/achievements.jpg',
+  },
+  {
+    id: 'fb-3',
+    title: 'Holistic Patient Consultation',
+    category: 'DOCTOR',
+    description: 'In-depth consultation sessions focusing on long-term wellness.',
+    image: '/images/doctor-profile.jpg',
+  },
+];
 
 export function DoctorEventsSlider() {
   const [items, setItems] = useState<any[]>([]);
@@ -20,10 +44,22 @@ export function DoctorEventsSlider() {
       setLoading(true);
       try {
         const doctorPhotos = await getGalleryItems('DOCTOR');
-        setItems(doctorPhotos || []);
+        const allPhotos = await getGalleryItems('ALL');
+        const filtered = (allPhotos || []).filter(
+          (item: any) => item.category === 'DOCTOR' || item.category === 'EVENT'
+        );
+
+        const combined = [...(doctorPhotos || []), ...filtered];
+        const unique = Array.from(new Map(combined.map((item) => [item.id, item])).values());
+
+        if (unique.length > 0) {
+          setItems(unique);
+        } else {
+          setItems(fallbackItems);
+        }
       } catch (err) {
         console.error('Failed to load slider items:', err);
-        setItems([]);
+        setItems(fallbackItems);
       } finally {
         setLoading(false);
       }
@@ -31,7 +67,7 @@ export function DoctorEventsSlider() {
     loadData();
   }, []);
 
-  // Auto-play
+  // Auto-play interval
   useEffect(() => {
     if (items.length <= 1 || isPaused) return;
     const interval = setInterval(() => {
@@ -39,10 +75,6 @@ export function DoctorEventsSlider() {
     }, 4500);
     return () => clearInterval(interval);
   }, [items.length, isPaused]);
-
-  if (loading || !items || items.length === 0) {
-    return null;
-  }
 
   const handlePrev = () => {
     setCurrentIndex((prev) => (prev === 0 ? items.length - 1 : prev - 1));
@@ -71,15 +103,25 @@ export function DoctorEventsSlider() {
     if (distance < -minSwipeDistance) handlePrev();
   };
 
-  if (!items || items.length === 0) return null;
+  if (loading) {
+    return (
+      <section className="py-12 md:py-16 bg-slate-50/50 border-y border-border/40">
+        <div className="container mx-auto px-4 md:px-6 max-w-5xl text-center py-12">
+          <div className="animate-pulse flex flex-col items-center gap-3">
+            <div className="h-6 w-48 bg-slate-200 rounded-full" />
+            <div className="h-8 w-64 bg-slate-200 rounded-lg" />
+            <div className="h-64 md:h-96 w-full bg-slate-200 rounded-3xl mt-4" />
+          </div>
+        </div>
+      </section>
+    );
+  }
 
-  const safeIndex = (currentIndex >= 0 && currentIndex < items.length) ? currentIndex : 0;
-  const activeItem = items[safeIndex];
-
-  if (!activeItem) return null;
+  const safeIndex = currentIndex >= 0 && currentIndex < items.length ? currentIndex : 0;
+  const activeItem = items[safeIndex] || fallbackItems[0];
 
   return (
-    <section className="py-12 md:py-16 bg-gradient-to-b from-background via-muted/30 to-background border-y border-border/50">
+    <section className="py-12 md:py-16 bg-slate-50/60 border-y border-border/50">
       <div className="container mx-auto px-4 md:px-6 space-y-8 max-w-5xl">
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
@@ -87,15 +129,15 @@ export function DoctorEventsSlider() {
             <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-bold uppercase tracking-wider mb-2">
               <Sparkles size={14} /> Doctor & Events Highlights
             </div>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-foreground tracking-tight">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--color-navy)] tracking-tight">
               Dr. Pathak & Clinic Events
             </h2>
             <p className="text-muted-foreground text-sm sm:text-base mt-1">
-              Highlights of medical events, awards, and clinic moments.
+              Highlights of medical events, achievements, and clinic moments.
             </p>
           </div>
 
-          <Button asChild variant="outline" className="hidden sm:flex items-center gap-2">
+          <Button asChild variant="outline" className="hidden sm:flex items-center gap-2 rounded-full border-primary/20 hover:border-primary">
             <Link href="/gallery">
               View Full Gallery <ArrowRight size={16} />
             </Link>
@@ -113,7 +155,7 @@ export function DoctorEventsSlider() {
         >
           {/* Active Slide Image */}
           <div
-            className="relative h-[280px] sm:h-[380px] md:h-[450px] w-full overflow-hidden cursor-pointer"
+            className="relative h-[300px] sm:h-[400px] md:h-[480px] w-full overflow-hidden cursor-pointer"
             onClick={() => setSelectedImage(activeItem)}
           >
             <img
@@ -121,12 +163,12 @@ export function DoctorEventsSlider() {
               alt={activeItem.title}
               className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
 
             {/* Info Overlay */}
             <div className="absolute bottom-6 left-6 right-6 text-white space-y-2 max-w-2xl">
               <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-bold uppercase tracking-wider border border-white/30">
-                Doctor & Events
+                {activeItem.category === 'EVENT' ? 'Clinic Event' : 'Doctor & Events'}
               </span>
               <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold line-clamp-1 drop-shadow-md">
                 {activeItem.title}
@@ -163,13 +205,14 @@ export function DoctorEventsSlider() {
               </button>
 
               {/* Dots Indicator */}
-              <div className="absolute bottom-3 right-6 flex items-center gap-1.5 z-10">
+              <div className="absolute bottom-4 right-6 flex items-center gap-1.5 z-10">
                 {items.map((_, idx) => (
                   <button
                     key={idx}
                     onClick={() => setCurrentIndex(idx)}
-                    className={`h-2 rounded-full transition-all duration-300 ${currentIndex === idx ? 'w-6 bg-white' : 'w-2 bg-white/50 hover:bg-white/80'
-                      }`}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      currentIndex === idx ? 'w-6 bg-white' : 'w-2 bg-white/50 hover:bg-white/80'
+                    }`}
                     aria-label={`Go to slide ${idx + 1}`}
                   />
                 ))}
@@ -180,7 +223,7 @@ export function DoctorEventsSlider() {
 
         {/* Mobile View All Button */}
         <div className="sm:hidden text-center pt-2">
-          <Button asChild variant="outline" className="w-full">
+          <Button asChild variant="outline" className="w-full rounded-full">
             <Link href="/gallery">
               View Full Gallery <ArrowRight size={16} />
             </Link>
@@ -202,7 +245,7 @@ export function DoctorEventsSlider() {
               onClick={() => setSelectedImage(null)}
               className="absolute top-4 right-4 z-10 p-2 bg-black/60 text-white rounded-full hover:bg-black/80 transition-colors"
             >
-              ✕
+              <X size={20} />
             </button>
             <div className="max-h-[70vh] bg-black flex items-center justify-center overflow-hidden">
               <img
@@ -213,7 +256,7 @@ export function DoctorEventsSlider() {
             </div>
             <div className="p-6">
               <span className="text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-2.5 py-1 rounded-full">
-                {selectedImage.category}
+                {selectedImage.category || 'DOCTOR & EVENT'}
               </span>
               <h2 className="text-2xl font-bold text-foreground mt-2">{selectedImage.title}</h2>
               {selectedImage.description && (

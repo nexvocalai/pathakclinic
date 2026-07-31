@@ -38,7 +38,7 @@ export function DoctorProfile() {
                 <span className="mt-2 h-2 w-2 rounded-full bg-primary shrink-0" />
                 <div className="text-sm">
                   <span className="font-bold text-foreground">Degree:</span>{' '}
-                  <span className="text-muted-foreground">Bachelor of Homoeopathic Medicine and Surgery (B.H.M.S)</span>
+                  <span className="text-muted-foreground">Bachelor of Homoeopathic Medicine and Surgery (B.H.M.S), Master's in Psychology (MAPC)</span>
                 </div>
               </div>
 

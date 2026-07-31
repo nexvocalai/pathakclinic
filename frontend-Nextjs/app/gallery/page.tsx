@@ -13,19 +13,29 @@ export default async function GalleryPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <section className="bg-gradient-to-b from-primary/5 via-background to-background py-14 md:py-20 border-b border-border">
-        <div className="container mx-auto px-4 text-center max-w-3xl">
-          <span className="text-sm font-bold tracking-wider text-primary uppercase bg-primary/10 px-3 py-1 rounded-full">
-            Visual Highlights
-          </span>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-foreground mt-4 mb-3 tracking-tight">
+      <div
+        className="relative w-full h-[300px] md:h-[220px] flex items-center justify-center text-center text-white overflow-hidden"
+        style={{
+          backgroundImage: "url('/images/testimonials-header.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        {/* Blur + Dark Overlay */}
+        <div className="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+
+        {/* Content */}
+        <div className="relative z-10 max-w-2xl px-4">
+          <h1 className="text-2xl md:text-4xl font-bold drop-shadow-lg">
             Clinic & Camp Gallery
           </h1>
-          <p className="text-lg text-muted-foreground leading-relaxed">
+
+          <p className="mt-2 text-sm md:text-lg leading-relaxed drop-shadow-md">
             Take a look inside Pathak Homoeopathic Clinic, our modern facilities, and our community health camps dedicated to holistic healing.
           </p>
         </div>
-      </section>
+      </div>
 
       {/* Gallery Section */}
       <section className="py-12 md:py-16">
