@@ -1,7 +1,10 @@
 import axios, { AxiosInstance } from 'axios';
 import { useAuthStore } from './auth-store';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || '/api';
+// Always use the relative /api path so requests go through the Next.js proxy
+// (app/api/[...path]/route.ts), which then forwards to the Spring Boot backend.
+// Never use the backend IP directly from the browser (causes Mixed Content block over HTTPS).
+const API_BASE_URL = '/api';
 
 let apiClient: AxiosInstance | null = null;
 
