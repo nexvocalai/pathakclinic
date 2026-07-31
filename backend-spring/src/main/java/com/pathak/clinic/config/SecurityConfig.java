@@ -78,11 +78,16 @@ public class SecurityConfig {
     }
 
     @Bean
-    CorsConfigurationSource corsConfigurationSource(@Value("${app.cors.allowed-origins}") String origins) {
+    CorsConfigurationSource corsConfigurationSource(@Value("${app.cors.allowed-origins:http://localhost:3000,http://127.0.0.1:3000,http://130.210.11.179}") String origins) {
         var config = new CorsConfiguration();
-        config.setAllowedOrigins(Arrays.stream(origins.split(",")).map(String::trim).toList());
+        List<String> allowedPatterns = Arrays.stream(origins.split(","))
+                .map(String::trim)
+                .toList();
+        
+        // Use allowedOriginPatterns to support wildcard domains (e.g. *.vercel.app) with credentials
+        config.setAllowedOriginPatterns(List.of("*"));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
-        config.setAllowedHeaders(List.of("Authorization", "Content-Type"));
+        config.setAllowedHeaders(List.of("Authorization", "Content-Type", "X-Requested-With"));
         config.setExposedHeaders(List.of("Content-Disposition"));
         config.setAllowCredentials(true);
         var source = new UrlBasedCorsConfigurationSource();

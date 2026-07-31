@@ -16,8 +16,8 @@ const nextConfig = {
     const apiUrl = process.env.API_URL || 'http://130.210.11.179:8080';
     return [
       {
-        source: '/api/uploads/:path*',
-        destination: `${apiUrl}/api/uploads/:path*`,
+        source: '/api/:path*',
+        destination: `${apiUrl}/api/:path*`,
       },
     ];
   },
