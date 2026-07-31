@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 
-const API_URL = process.env.API_URL || "http://localhost:8080";
+const API_URL = process.env.API_URL || "http://130.210.11.179:8080";
 
 function formatGalleryItem(item: any) {
   if (!item) return item;
