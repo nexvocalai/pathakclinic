@@ -1,9 +1,7 @@
 package com.pathak.clinic.config;
 
 import com.pathak.clinic.security.JwtAuthenticationFilter;
-import java.util.Arrays;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -78,17 +76,12 @@ public class SecurityConfig {
     }
 
     @Bean
-    CorsConfigurationSource corsConfigurationSource(@Value("${app.cors.allowed-origins:http://localhost:3000,http://127.0.0.1:3000,http://130.210.11.179}") String origins) {
+    CorsConfigurationSource corsConfigurationSource() {
         var config = new CorsConfiguration();
-        List<String> allowedPatterns = Arrays.stream(origins.split(","))
-                .map(String::trim)
-                .toList();
-        
-        // Use allowedOriginPatterns to support wildcard domains (e.g. *.vercel.app) with credentials
         config.setAllowedOriginPatterns(List.of("*"));
-        config.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
-        config.setAllowedHeaders(List.of("Authorization", "Content-Type", "X-Requested-With"));
-        config.setExposedHeaders(List.of("Content-Disposition"));
+        config.setAllowedMethods(List.of("*"));
+        config.setAllowedHeaders(List.of("*"));
+        config.setExposedHeaders(List.of("*"));
         config.setAllowCredentials(true);
         var source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
