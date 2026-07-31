@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 
-const API_URL = process.env.API_URL || "http://localhost:8080";
+const API_URL = process.env.API_URL || "http://130.210.11.179:8080";
 
 // Helper to convert array from Java backend back to JSON string for frontend compatibility
 function formatDiseaseData(d: any) {
