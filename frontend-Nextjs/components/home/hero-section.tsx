@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowRight, MessageCircle } from "lucide-react";
 
 const programTags = [
@@ -69,18 +68,22 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right Image */}
+          {/* Right Video */}
           <div className="order-1 md:order-2 flex justify-center md:justify-end">
             <div className="relative w-full max-w-[480px] aspect-[4/3] overflow-hidden rounded-2xl shadow-2xl">
-              <Image
-                src="/images/hero-homeopathy.jpg"
-                alt="Happy healthy family"
-                fill
-                priority
-                className="object-cover"
-              />
-              {/* Subtle overlay for premium feel */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-navy)]/10 to-transparent" />
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+                className="absolute inset-0 w-full h-full object-cover object-right"
+                aria-hidden="true"
+              >
+                <source src="/background-video.mp4" type="video/mp4" />
+              </video>
+              {/* Subtle gradient overlay for premium feel */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-navy)]/10 to-transparent pointer-events-none" />
             </div>
           </div>
         </div>
