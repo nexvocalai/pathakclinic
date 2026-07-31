@@ -19,14 +19,17 @@ export function HeroSection() {
         muted
         playsInline
         preload="auto"
-        className="absolute inset-0 w-full h-full object-cover object-center"
+        className="absolute inset-0 w-full h-full object-cover object-center scale-105 blur-sm"
         aria-hidden="true"
       >
         <source src="/background-video.mp4" type="video/mp4" />
       </video>
 
       {/* Overlay: darker on the left so text stays readable, lighter on the right to show video */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-cream)]/95 via-[var(--color-cream)]/70 to-[var(--color-cream)]/10" />
+      {/* Strong left overlay for text legibility, lighter on right to show video */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-cream)]/[0.92] via-[var(--color-cream)]/75 to-[var(--color-cream)]/40" />
+      {/* Extra top+bottom vignette for depth */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/15" />
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 md:px-6 py-16 md:py-24 lg:py-28">
