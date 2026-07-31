@@ -11,16 +11,6 @@ const nextConfig = {
       bodySizeLimit: '10mb',
     },
   },
-  allowedDevOrigins: ['172.16.2.34'],
-  async rewrites() {
-    const apiUrl = process.env.API_URL || 'http://130.210.11.179:8080';
-    return [
-      {
-        source: '/api/:path*',
-        destination: `${apiUrl}/api/:path*`,
-      },
-    ];
-  },
 }
 
 export default nextConfig

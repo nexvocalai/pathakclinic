@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { BlogList } from "@/components/blog/blog-list";
 import { getBlogs } from "@/app/actions/blogs";
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: "Health & Wellness Blog | Pathak Homoeopathic",
   description:

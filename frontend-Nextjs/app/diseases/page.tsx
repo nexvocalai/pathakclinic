@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { DiseasesGrid } from "@/components/diseases/diseases-grid";
 import { getDiseases } from "@/app/actions/diseases";
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: "Diseases & Conditions Treated | Pathak Homoeopathic",
   description:

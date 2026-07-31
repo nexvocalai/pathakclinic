@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { getGalleryItems } from '@/app/actions/gallery';
 import { GalleryView } from '@/components/gallery/gallery-view';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Photo Gallery | Pathak Homoeopathic Clinic & Camps',
   description: 'Explore photos of our clinic facilities, medical health camps, events, and treatment highlights.',
