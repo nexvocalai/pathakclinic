@@ -45,9 +45,9 @@ const services = [
   },
   {
     icon: Baby,
-    title: "Women&apos;s Health",
+    title: "Women's Wellness",
     description:
-      "Specialized care for women&apos;s health issues including PCOS, menstrual disorders, hormonal imbalances, fertility support, and menopause management.",
+      "Specialized care for women's health issues including PCOS, menstrual disorders, hormonal imbalances, fertility support, and menopause management.",
     conditions: [
       "PCOS",
       "Menstrual disorders",
@@ -60,7 +60,7 @@ const services = [
     icon: Baby,
     title: "Child Care",
     description:
-      "Gentle and safe homoeopathic treatment for children&apos;s health issues including recurrent infections, growth concerns, behavioral issues, and developmental support.",
+      "Gentle and safe homoeopathic treatment for childrens health issues including recurrent infections, growth concerns, behavioral issues, and developmental support.",
     conditions: [
       "Recurrent infections",
       "Growth issues",

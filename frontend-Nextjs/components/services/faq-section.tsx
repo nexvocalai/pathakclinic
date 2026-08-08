@@ -19,12 +19,12 @@ const faqs = [
   {
     question: "Is homoeopathy suitable for children?",
     answer:
-      "Absolutely! Homoeopathy is particularly well-suited for children as the remedies are gentle, sweet-tasting, and free from side effects. It&apos;s effective for common childhood issues like recurrent colds, allergies, behavioral problems, and growth concerns.",
+      "Absolutely! Homoeopathy is particularly well-suited for children as the remedies are gentle, sweet-tasting, and free from side effects. Its effective for common childhood issues like recurrent colds, allergies, behavioral problems, and growth concerns.",
   },
   {
     question: "Can I take homoeopathic medicine with other medications?",
     answer:
-      "In most cases, yes. Homoeopathic medicines generally work well alongside conventional treatments. However, it&apos;s important to inform your homoeopathic doctor about any other medications you are taking so they can provide appropriate guidance.",
+      "In most cases, yes. Homoeopathic medicines generally work well alongside conventional treatments. However, its important to inform your homoeopathic doctor about any other medications you are taking so they can provide appropriate guidance.",
   },
   {
     question: "Do I need to follow any dietary restrictions during treatment?",

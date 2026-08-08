@@ -7,7 +7,7 @@ const quickLinks1 = [
   { href: "/programs", label: "Our Programs" },
   { href: "/services", label: "Services" },
   { href: "/diseases", label: "Diseases We Treat" },
-  { href: "/testimonials", label: "Testimonials" },
+  //{ href: "/testimonials", label: "Testimonials" },
 ];
 
 const quickLinks2 = [
@@ -63,9 +63,9 @@ export function Footer() {
                 className="w-[220px] h-auto object-contain brightness-0 invert opacity-95 transition-opacity hover:opacity-100 drop-shadow-[0_2px_8px_rgba(255,255,255,0.1)]"
               />
             </Link>
-            <p className="text-sm leading-relaxed text-white/60">
+            {/* <p className="text-sm leading-relaxed text-white/60">
               Your Neighbourhood Wellness Clinic
-            </p>
+            </p> */}
 
             {/* Social Icons */}
             <div className="flex items-center gap-3 pt-2">
@@ -148,10 +148,10 @@ export function Footer() {
               <li className="flex items-center gap-3">
                 <Mail className="h-4 w-4 shrink-0 text-[var(--color-gold)]" />
                 <a
-                  href="mailto:pathakhomoeoclinic@gmail.com"
+                  href="mailto:drratipathak@gmail.com"
                   className="text-sm text-white/60 transition-colors hover:text-[var(--color-gold)]"
                 >
-                  pathakhomoeoclinic@gmail.com
+                  drratipathak@gmail.com
                 </a>
               </li>
             </ul>

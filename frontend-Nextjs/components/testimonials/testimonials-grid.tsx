@@ -103,13 +103,13 @@ export function TestimonialsGrid() {
       {/* Google Maps Link */}
       <div className="mt-12 flex justify-center">
         <a
-          href="https://maps.app.goo.gl/WjX3Mom7iJciYzvg8"
+          href="https://g.page/r/CdV5rX8fGZHsEBM/review"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-6 py-3 font-medium text-foreground transition-all hover:bg-muted hover:shadow-sm"
         >
           <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" className="w-5 h-5" />
-          See all reviews on Google Maps
+          Write a Review on Google
         </a>
       </div>
 
